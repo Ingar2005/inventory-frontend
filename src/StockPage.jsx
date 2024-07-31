@@ -41,7 +41,7 @@ function StockPage({url}){
             "roomName":itemRoomName
             
         }
-        const url = url+"/"+(updating ? `update_stock/${itemId}`:"create_stock")
+        const link = (url)+"/"+(updating ? `update_stock/${itemId}`:"create_stock")
         const options = {
             method:(updating ? "PATCH":"POST"),
             headers:{
@@ -50,7 +50,7 @@ function StockPage({url}){
             body: JSON.stringify(data)
         }
 
-        const response = await fetch(url,options)
+        const response = await fetch(link,options)
         if(response.status !== 201 && response.status !==200){
             const message = await response.json()
             alert(message.message)
