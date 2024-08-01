@@ -99,7 +99,8 @@ function StockPage({url}){
         <StockForm id ={itemId} setId={setItemId} name = {itemName} setName={setItemName}
         level ={itemLevel} setLevel ={setItemLevel} roomName = {itemRoomName} setRoom={setItemRoom}
         handleStockSubmit ={handleStockSubmit} deleteStock={deleteStock} url={url} />
-    </div>)
+    </div>
+    )
 
 }
 

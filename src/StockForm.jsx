@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import DataList from "./DataList"
+import { Link } from "react-router-dom";
 
 function StockForm({name,setName,id,setId,level,setLevel,roomName,setRoom,handleStockSubmit,deleteStock,url}){
 
@@ -69,6 +70,8 @@ function StockForm({name,setName,id,setId,level,setLevel,roomName,setRoom,handle
             <br></br>
             <button  className="flex-initial bg-steel-blue-500  px-3 py-2 mx-2.5 my-1 text-white rounded-md hover:rounded-lg    hover:bg-steel-blue-600 #517bbd" onClick={e=> handleStockSubmit(e,false)}>Add Stock</button>
             <button className="flex-initial bg-steel-blue-500  px-3 py-2 mx-2.5 my-1 text-white rounded-md hover:rounded-lg    hover:bg-steel-blue-600 #517bbd" onClick={e => handleStockSubmit(e,true)}>Update Stock</button>
+            <Link to="/admin/config" ><button className="flex-initial bg-steel-blue-500 pd px-6 py-2 mx-2.5 my-1 text-white rounded-md hover:rounded-lg  hover:bg-steel-blue-600 #517bbd  " onClick={() => console.log(" pressed") }>Config</button></Link>
+
         </form>
     )
 }
