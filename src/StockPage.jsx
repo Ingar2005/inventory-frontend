@@ -76,7 +76,7 @@ function StockPage({url}){
             else{
                 console.error("failed to delete")
             }
-            
+            onUpdate()
         }
         catch(error){
             alert(error)
