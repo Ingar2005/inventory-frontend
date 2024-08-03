@@ -47,7 +47,7 @@ function StockForm({name,setName,id,setId,level,setLevel,roomName,setRoom,handle
     return(
         <form>
             <div className="flex justify-center">
-                <button className="flex-initial bg-steel-blue-500  px-3 py-2  text-white rounded-md hover:rounded-lg    hover:bg-steel-blue-600 #517bbd" onClick={(e)=> deleteStock(e)}>Delete Stock</button>
+                <button className="flex-initial bg-steel-blue-500  px-3 py-2  text-white rounded-md hover:rounded-lg    hover:bg-steel-blue-600 #517bbd" onClick={(e)=> {this.disabled=true;deleteStock(e)}}>Delete Stock</button>
             </div>
             <br></br>
             <label htmlFor="stockId">Id :</label>
@@ -68,9 +68,9 @@ function StockForm({name,setName,id,setId,level,setLevel,roomName,setRoom,handle
             <DataList id = {"rooms-list"} list={roomList}/>
             {/* VALIDATE DURING SUBMITION */}
             <br></br>
-            <button  className="flex-initial bg-steel-blue-500  px-3 py-2 mx-2.5 my-1 text-white rounded-md hover:rounded-lg    hover:bg-steel-blue-600 #517bbd" onClick={e=> handleStockSubmit(e,false)}>Add Stock</button>
-            <button className="flex-initial bg-steel-blue-500  px-3 py-2 mx-2.5 my-1 text-white rounded-md hover:rounded-lg    hover:bg-steel-blue-600 #517bbd" onClick={e => handleStockSubmit(e,true)}>Update Stock</button>
-            <Link to="/admin/config" ><button className="flex-initial bg-steel-blue-500 pd px-6 py-2 mx-2.5 my-1 text-white rounded-md hover:rounded-lg  hover:bg-steel-blue-600 #517bbd  " onClick={() => console.log(" pressed") }>Config</button></Link>
+            <button  className="flex-initial bg-steel-blue-500  px-3 py-2 mx-2.5 my-1 text-white rounded-md hover:rounded-lg    hover:bg-steel-blue-600 #517bbd" onClick={e=> {this.disabled = true; handleStockSubmit(e,false)}}>Add Stock</button>
+            <button className="flex-initial bg-steel-blue-500  px-3 py-2 mx-2.5 my-1 text-white rounded-md hover:rounded-lg    hover:bg-steel-blue-600 " onClick={e => {this.disabled=true;handleStockSubmit(e,true)}}>Update Stock</button>
+            <Link to="config" ><button className="flex-initial bg-steel-blue-500 pd px-6 py-2 mx-2.5 my-1 text-white rounded-md hover:rounded-lg  hover:bg-steel-blue-600 #517bbd  " >Config</button></Link>
 
         </form>
     )

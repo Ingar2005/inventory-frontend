@@ -25,9 +25,11 @@ function App() {
           <Route path='stock'>
             <Route index element={<StockHome url={url} />} />
             <Route path="logs" element={<LogPage url={url} />} />
-            <Route path="live" element={<StockPage url={url} />} />
+            <Route path="live">
+              <Route path='config' element={<ConfigPage url={url} />} />
+              <Route index element={<StockPage url={url} />} />
+            </Route>
           </Route>
-          <Route path='config' element={<ConfigPage url={url} />} />
         </Route>
       </Route>
     

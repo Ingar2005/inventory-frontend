@@ -33,7 +33,7 @@ function StockPage({url}){
 
     const handleStockSubmit = async(e,updating) =>{
         e.preventDefault()
-
+        
         const data ={
 
             itemName,
