@@ -1,3 +1,5 @@
+import {useState} from "react";
+
 export default function LogTable({logs ,handleClick}){
     const findDiff = (after,before) =>{
         const diff = after-before
@@ -5,6 +7,7 @@ export default function LogTable({logs ,handleClick}){
 
         return (absDiff)
     }
+    const [disabled,setDisabled] = useState(false)
     return(
         <table className="mx-3 overflow-scroll max-h-full">
             <thead className="bg-steel-blue-500  text-slate-100" >
@@ -40,7 +43,7 @@ export default function LogTable({logs ,handleClick}){
                     <td>{log.amountAfter}</td>
                     <td className= {"bg-steel-blue-300 font-bold "+(pos()==true ? 'text-green-600':'text-red-600')} >{findDiff(log.amountAfter,log.amountBefore)}</td>
                     <td className="flex justify-center items-center"><button className=" bg-steel-blue-500  px-6 py-2 mx-2.5 my-1
-                     text-white rounded-md hover:rounded-lg    hover:bg-steel-blue-600 #517bbd" onClick={() => {this.disabled = true;  handleClick(log)}}>Delete</button></td>
+                     text-white rounded-md hover:rounded-lg    hover:bg-steel-blue-600 #517bbd" disabled={disabled} onClick={() => {setDisabled(true);  handleClick(log)}}>Delete</button></td>
                 </tr>)})}
             </tbody>
         </table>

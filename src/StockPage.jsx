@@ -81,7 +81,7 @@ function StockPage({url}){
         catch(error){
             alert(error)
         }
-        onUpdate()
+        
 
 
     }
