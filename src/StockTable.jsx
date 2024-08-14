@@ -1,5 +1,7 @@
+import {useEffect} from "react";
+
 function StockTable({stock,setFormItem}){
-    
+
     return(
         <div className="overflow-y-auto">
         <table className="">

@@ -65,7 +65,7 @@ export default  function ItemForm({suppliers,currentSubject,refreshTables,url}){
         return(
         <form onSubmit={e => onSubmit(e)}>
             <label htmlFor="id">Id:</label><br></br>
-            <input className="bg-steel-blue-100 p-1 rounded-md  focus:bg-steel-blue-300 my-2 hover:cursor-not-allowed" type="input" id="id"value={id} disabled></input>
+            <input className="bg-steel-blue-100 p-1 rounded-md  focus:bg-steel-blue-300 my-2 hover:cursor-not-allowed" type="input" id="id"value={id} disabled={true}></input>
             <br></br>
             <label htmlFor="itemName">Item Name:</label>
             <br></br>
@@ -73,7 +73,7 @@ export default  function ItemForm({suppliers,currentSubject,refreshTables,url}){
             <br></br>
             <label htmlFor="catagory">Catagory:</label>
             <br></br>
-            <input className="bg-steel-blue-100 p-1 rounded-md  focus:bg-steel-blue-300 my-2 disabled:cursor-not-allowed" type="input" id="catagory" list="catagoryList" value={catagory}  disabled></input>
+            <input className="bg-steel-blue-100 p-1 rounded-md  focus:bg-steel-blue-300 my-2 disabled:cursor-not-allowed" type="input" id="catagory" list="catagoryList" value={catagory}  disabled={true}></input>
             {/* <DataList id = {"catagoryList"} list={catagories}/> */}
 
             <br></br>

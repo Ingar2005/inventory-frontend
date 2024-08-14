@@ -2,11 +2,11 @@ import { useEffect, useState } from "react"
 import DataList from "./DataList"
 import { Link } from "react-router-dom";
 
-function StockForm({name,setName,id,setId,level,setLevel,roomName,setRoom,handleStockSubmit,deleteStock,url}){
+function StockForm({name,setName,id,setId,level,setLevel,roomName,setRoom,handleStockSubmit,deleteStock,url,disabled,setDisabled}){
 
     const [itemList,setItemList]= useState([])
     const [roomList,setRoomList] = useState([])
-    const [disabled,setDisabled] = useState(false);
+
     useEffect(()=>{
         fetchItems()
         fetchRooms()
@@ -22,7 +22,7 @@ function StockForm({name,setName,id,setId,level,setLevel,roomName,setRoom,handle
     }
     const fetchRooms = async() => {
         try{
-            const link =url+"/rooms/data-list"
+            const link =url+"rooms/data-list"
             const res = await fetch(link)
             const data = await res.json()
             setRoomList(data)
@@ -34,7 +34,7 @@ function StockForm({name,setName,id,setId,level,setLevel,roomName,setRoom,handle
     }
     const fetchItems = async() =>{        
         try{
-            const link = url+"/items/data-list"
+            const link = url+"items/data-list"
             const res = await fetch(link)
             const data = await res.json()
             setItemList(data)

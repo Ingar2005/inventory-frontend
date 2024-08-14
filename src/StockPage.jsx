@@ -2,6 +2,7 @@ import { useState, useEffect} from "react"
 import StockTable from "./StockTable"
 import StockForm from "./StockForm"
 
+
 function StockPage({url}){
     const [stock, setStock] = useState([])
     // states for form
@@ -9,10 +10,12 @@ function StockPage({url}){
     const [itemName,setItemName] = useState("")
     const [itemLevel,setItemLevel] = useState("")
     const [itemRoomName,setItemRoom] = useState("")
+    const [disabled,setDisabled] = useState(false);
 
+    useEffect(() => {fetchStock()},[stock])
 
-    useEffect(() => {fetchStock()},[])
     const onUpdate = () => {
+        setDisabled(false)
         fetchStock()
         setItemName("")
         setItemId("")
@@ -21,7 +24,7 @@ function StockPage({url}){
     }
     const fetchStock = async () => {
         try{
-            const res = await fetch(url+"/stock_table")
+            const res = await fetch(url+"stock_table")
             const data = await res.json()
             setStock(data)
         }
@@ -54,6 +57,7 @@ function StockPage({url}){
         if(response.status !== 201 && response.status !==200){
             const message = await response.json()
             alert(message.message)
+            onUpdate()
         }
         else{
             alert("successfull")
@@ -98,7 +102,7 @@ function StockPage({url}){
         <StockTable stock = {stock} setFormItem ={setFormItem} />
         <StockForm id ={itemId} setId={setItemId} name = {itemName} setName={setItemName}
         level ={itemLevel} setLevel ={setItemLevel} roomName = {itemRoomName} setRoom={setItemRoom}
-        handleStockSubmit ={handleStockSubmit} deleteStock={deleteStock} url={url} />
+        handleStockSubmit ={handleStockSubmit} deleteStock={deleteStock} url={url} disabled={disabled} setDisabled={setDisabled} />
     </div>
     )
 

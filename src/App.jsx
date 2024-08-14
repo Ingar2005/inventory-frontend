@@ -13,7 +13,7 @@ import Config from './Config'
 // CREATE MODAL COMPONENT FOR ITEMS SUPPLIER AND ROOMS AS SEEN ON THE VIDEO
 // MAYBE DELETE ALL THE <br></br> TAGS REPLACE WITH FANCY CSS?
 function App() {
-  const url = "https://morning-gorge-05218-b691e0a02f31.herokuapp.com/"
+  const url = "https://backend-stg-bdeef42935fd.herokuapp.com/"
 
   return (
   <Routes >
