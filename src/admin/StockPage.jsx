@@ -1,6 +1,6 @@
 import { useState, useEffect} from "react"
 import StockTable from "./StockTable"
-import StockForm from "./StockForm"
+import StockForm from "./stock-control/stock/StockForm"
 
 
 function StockPage({url}){
@@ -11,8 +11,8 @@ function StockPage({url}){
     const [itemLevel,setItemLevel] = useState("")
     const [itemRoomName,setItemRoom] = useState("")
     const [disabled,setDisabled] = useState(false);
-
-    useEffect(() => {fetchStock()},[stock])
+    const [isLoading,setIsLoading] = useState(true);
+    useEffect(() => {onUpdate()},[])
 
     const onUpdate = () => {
         setDisabled(false)
@@ -24,8 +24,11 @@ function StockPage({url}){
     }
     const fetchStock = async () => {
         try{
+            setIsLoading(true)
             const res = await fetch(url+"stock_table")
             const data = await res.json()
+            console.log(data,stock)
+            setIsLoading(false)
             setStock(data)
         }
         catch(error){
@@ -36,13 +39,13 @@ function StockPage({url}){
 
     const handleStockSubmit = async(e,updating) =>{
         e.preventDefault()
-        
+
         const data ={
 
             itemName,
             "level":itemLevel,
             "roomName":itemRoomName
-            
+
         }
         const link = (url)+"/"+(updating ? `update_stock/${itemId}`:"create_stock")
         const options = {
@@ -85,7 +88,7 @@ function StockPage({url}){
         catch(error){
             alert(error)
         }
-        
+
 
 
     }
@@ -97,12 +100,15 @@ function StockPage({url}){
         setItemRoom(e.item.roomName)
     }
 
-    
+
     return(<div className="flex flex-row justify-evenly">
-        <StockTable stock = {stock} setFormItem ={setFormItem} />
-        <StockForm id ={itemId} setId={setItemId} name = {itemName} setName={setItemName}
-        level ={itemLevel} setLevel ={setItemLevel} roomName = {itemRoomName} setRoom={setItemRoom}
-        handleStockSubmit ={handleStockSubmit} deleteStock={deleteStock} url={url} disabled={disabled} setDisabled={setDisabled} />
+            {isLoading ? (
+                <h1> ... </h1>
+            ):(   <>     <StockTable stock = {stock} setFormItem ={setFormItem} />
+                <StockForm id ={itemId} setId={setItemId} name = {itemName} setName={setItemName}
+                                        level ={itemLevel} setLevel ={setItemLevel} roomName = {itemRoomName} setRoom={setItemRoom}
+                                        handleStockSubmit ={handleStockSubmit} deleteStock={deleteStock} url={url} disabled={disabled} setDisabled={setDisabled} /></>)}
+
     </div>
     )
 

@@ -54,8 +54,8 @@ export default function SuppliersForm({currentSubject,refreshTables,url}){
             else if (Object.entries(list).length !== 0  ){
                 valid = false
             }
-            if (valid){  
-                e.preventDefault()  
+            if (valid){
+                e.preventDefault()
                 const link = url+"/delete_supplier/"+(id)
                 const options = {
                     method:"DELETE"
@@ -68,8 +68,8 @@ export default function SuppliersForm({currentSubject,refreshTables,url}){
                     refreshTables()
                 }
             }
-                
-                
+
+
         }
     }
     return(

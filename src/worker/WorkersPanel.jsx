@@ -12,7 +12,7 @@ export default function WorkersPanel({url}){
     const [status, setStatus] = useState('');
     const [modal,setModal] =useState(false)
     const context = useOutletContext()
-    
+
     useEffect(() =>{fetchRooms() },[])
     useEffect(()=>{fetchStock() },[room])
     const fetchRooms = async() =>{
@@ -23,7 +23,7 @@ export default function WorkersPanel({url}){
         }
         const data = await response.json()
         setRooms(data)
-        
+
     }
 
     const fetchStock = async()=>{
@@ -34,7 +34,7 @@ export default function WorkersPanel({url}){
             const data = await response.json()
             setTable(data)
         }
-        
+
 
        }
     const tableClick = (item) => {
@@ -73,7 +73,7 @@ export default function WorkersPanel({url}){
         console.log(newAmount)
         if (valid ===true){
             const data = {
-                
+
                 "itemName":currentSubject.itemName,
                 "level":newAmount,
                 "roomName":currentSubject.roomName
@@ -91,7 +91,7 @@ export default function WorkersPanel({url}){
                 alert(data.message)
             }
             else{
-                
+
 
             }
         }
@@ -112,7 +112,7 @@ return(<div className="flex size-full justify-center items-center bg-steel-blue-
             </tbody>
         </table> :null)
     }
-        {(roomLength !== 0 ? (<div className="size-full"><button className="flex-initial bg-steel-blue-500 pd px-6 py-2 mx-2.5 my-1 text-white rounded-md hover:rounded-lg  hover:bg-steel-blue-600 text-2xl" onClick={() => setRoom({})}>{"Back"}</button>
+        {(roomLength !== 0 ? (<div className="size-full"><button className="flex-initial bg-steel-blue-500 pd px-6 py-2 mx-2.5 my-1 text-white rounded-md hover:rounded-lg  hover:bg-steel-blue-600 text-2xl" onClick={() => {setRoom({}); setTable([])}}>{"Back"}</button>
         <div className="flex flex-row justify-around items-center ">
         <div className="flex justify-center items-center w-5/12 h-full">
         <table className="size-4/6" key={"lol"}>
@@ -131,12 +131,12 @@ return(<div className="flex size-full justify-center items-center bg-steel-blue-
                         <td>{item.level}</td>
                     </tr>))}
             </tbody>
-        </table> 
+        </table>
         </div>
         <div className="flex flex-col size-1/6">
-        <button className=" aspect-square text-5xl  bg-steel-blue-500  px-3 py-2 mx-2.5 my-1 text-white rounded-md hover:rounded-lg    hover:bg-steel-blue-600 disabled:bg-steel-blue-100 
+        <button className=" aspect-square text-5xl  bg-steel-blue-500  px-3 py-2 mx-2.5 my-1 text-white rounded-md hover:rounded-lg    hover:bg-steel-blue-600 disabled:bg-steel-blue-100
          disabled:text-steel-blue-400 disabled:hover:bg-steel-blue-100 disabled:hover:cursor-not-allowed " disabled={Object.entries(currentSubject).length === 0} onClick={()=>{onAdd()}}>+</button>
-        <button className=" aspect-square  text-5xl bg-steel-blue-500  px-3 py-2 mx-2.5 my-1 text-white rounded-md hover:rounded-lg    hover:bg-steel-blue-600 disabled:bg-steel-blue-100 
+        <button className=" aspect-square  text-5xl bg-steel-blue-500  px-3 py-2 mx-2.5 my-1 text-white rounded-md hover:rounded-lg    hover:bg-steel-blue-600 disabled:bg-steel-blue-100
          disabled:text-steel-blue-400 disabled:hover:bg-steel-blue-100 disabled:hover:cursor-not-allowed " disabled={Object.entries(currentSubject).length === 0} onClick={()=>{onMinus()}}>-</button>
             </div>
         </div></div>):null )}
@@ -146,8 +146,8 @@ return(<div className="flex size-full justify-center items-center bg-steel-blue-
     }} onSubmit = {onSubmit}></WorkerModal>),document.body):null}
 
     </div>
-    
+
     </div>
-        
+
     )
 }

@@ -11,7 +11,7 @@ export default function ConfigPage({url}){
 
     const [isModalOpen,setIsModalOpen] = useState(false)
     const[currentSubject,setCurrentSubject] = useState([])
-    
+
     const closeModal =() =>{
         setIsModalOpen(false)
         setCurrentSubject([])
@@ -34,7 +34,7 @@ export default function ConfigPage({url}){
     const fetchSuppliers = async() =>{
         const res = await fetch(url+"/suppliers/data-list")
         const data = await res.json()
-        setSuppliers(data) 
+        setSuppliers(data)
     }
     const fetchRooms = async() =>{
         const res = await fetch(url+"/rooms/data-list")
@@ -60,22 +60,22 @@ export default function ConfigPage({url}){
 
     return(
         <div className="flex justify-evenly my-3">
-            
-        <TableElement id= {"items"} columns={[["id","id"],["Item Name","main"]]} items={items} 
+
+        <TableElement id= {"items"} columns={[["id","id"],["Item Name","main"]]} items={items}
          handleTableClick={handleTableClick} handleAdd={openAddItemModal}/>
          {isModalOpen ==="items" && <div className="modal">
             <div className="modal-content">
                 <span className="close" onClick={closeModal}>&times;</span>
-                <ItemForm suppliers={suppliers} currentSubject ={currentSubject} 
+                <ItemForm suppliers={suppliers} currentSubject ={currentSubject}
                 refreshTables={refreshTables} url={url} />
             </div>
             </div>}
-        <TableElement id={"suppliers"} columns={[["id","id"],["Supplier Name", "main"]]} items ={suppliers} 
+        <TableElement id={"suppliers"} columns={[["id","id"],["Supplier Name", "main"]]} items ={suppliers}
         handleTableClick={handleTableClick} handleAdd={openAddSupplierModal} />
                  {isModalOpen ==="suppliers" && <div className="modal">
             <div className="modal-content">
                 <span className="close" onClick={closeModal}>&times;</span>
-                <SuppliersForm   currentSubject={currentSubject} 
+                <SuppliersForm   currentSubject={currentSubject}
                 refreshTables={refreshTables} url={url} />
             </div>
             </div>}

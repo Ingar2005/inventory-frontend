@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import DataList from "./DataList"
+import DataList from "../../../DataList"
 
 export default  function ItemForm({suppliers,currentSubject,refreshTables,url}){
 
@@ -16,7 +16,7 @@ export default  function ItemForm({suppliers,currentSubject,refreshTables,url}){
             setSupplierName(currentSubject.supplier)
             setincidentLevel(currentSubject.incidet)
         }
-        
+
     },[])
 
     const onSubmit = async(e) => {
@@ -48,7 +48,7 @@ export default  function ItemForm({suppliers,currentSubject,refreshTables,url}){
     }
         const onDelete = async (e) =>{
             e.preventDefault()
-            
+
             const link = `${url}/delete_item/${id}`
             const options ={
                 method:"DELETE"
@@ -60,7 +60,7 @@ export default  function ItemForm({suppliers,currentSubject,refreshTables,url}){
             }else{
                 refreshTables()
             }
-    
+
         }
         return(
         <form onSubmit={e => onSubmit(e)}>
@@ -82,7 +82,7 @@ export default  function ItemForm({suppliers,currentSubject,refreshTables,url}){
             <input className="bg-steel-blue-100 p-1 rounded-md  focus:bg-steel-blue-300 my-2" type="input" id="supplier" list="supplierList" value={supplier} onChange={e => setSupplierName(e.target.value)} ></input>
             <DataList id = {"supplierList"} list={suppliers}/>
             <br></br>
-            
+
             <label htmlFor="incidentLevel">Incident Level:</label>
             <br></br>
             <input className="bg-steel-blue-100 p-1 rounded-md  focus:bg-steel-blue-300 my-2" type="Number" id="incidentLevel" value={incidentLevel} onChange={e => setincidentLevel(e.target.value)} ></input>

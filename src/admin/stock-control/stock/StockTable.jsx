@@ -13,7 +13,7 @@ function StockTable({stock,setFormItem}){
                 </tr>
             </thead>
             <tbody>
-                { 
+                {
                     stock.map((item) => (
                         <tr className="bg-steel-blue-200 hover:bg-steel-blue-300 " key = {item.id} onClick={() => setFormItem({item})}>
 

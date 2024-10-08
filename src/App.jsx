@@ -1,18 +1,17 @@
 import { useState } from 'react'
 import './App.css'
-import StockPage from './StockPage'
+import StockPage from './admin/stock-control/stock/StockPage.jsx'
 import NavBar from './NavBar'
-import ConfigPage from './ConfigPage'
-import LogPage from './LogPage'
-import WorkersPanel from './WorkersPanel'
+import ConfigPage from './admin/stock-control/stock/ConfigPage.jsx'
+import LogPage from './admin/stock-control/logs/LogPage.jsx'
+import WorkersPanel from './worker/WorkersPanel'
 import { Route, Routes } from 'react-router-dom'
-import StockHome from './StockHome'
-import MainButton from './MainButtons'
-import Config from './Config'
+import StockHome from './admin/stock-control/stock/StockHome.jsx'
+import MainButton from './admin/MainButtons'
 
 // CREATE MODAL COMPONENT FOR ITEMS SUPPLIER AND ROOMS AS SEEN ON THE VIDEO
 // MAYBE DELETE ALL THE <br></br> TAGS REPLACE WITH FANCY CSS?
-function App() {
+function App({}) {
   const url = "https://backend-stg-bdeef42935fd.herokuapp.com/"
 
   return (
@@ -32,12 +31,12 @@ function App() {
           </Route>
         </Route>
       </Route>
-    
+
     </Route>
-    
+
   </Routes>
 
-  
+
   )
 }
 

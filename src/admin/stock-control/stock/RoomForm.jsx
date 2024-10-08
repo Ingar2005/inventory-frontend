@@ -30,8 +30,8 @@ export default function roomForm({currentSubject,refreshTables,url}){
         }else{
             refreshTables()
         }
-    
-    }    
+
+    }
 
     const onDelete = async (e) =>{
         e.preventDefault()
@@ -47,11 +47,11 @@ export default function roomForm({currentSubject,refreshTables,url}){
         }else{
             refreshTables()
         }
-    
+
 
 
     }
-    
+
     return(
         <form>
             <label htmlFor="id">Id:</label>
